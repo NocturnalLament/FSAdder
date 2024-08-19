@@ -20,7 +20,7 @@ let ParseXML(fsprojFiles: string array, documentToAdd: string) =
     | Some group ->
         // Appends the requested item to the project file.
         let newElement = XElement(XName.Get("Compile"), XAttribute(XName.Get("Include"), documentToAdd))
-        group.Add(newElement)
+        group.AddFirst(newElement)
         doc.Save(fsProjPath)
     | None ->
         printfn "No Item was added. Try again."
